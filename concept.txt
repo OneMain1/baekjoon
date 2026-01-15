@@ -1,0 +1,18 @@
+# Python Concepts - Baekjoon Problem Solving
+
+map(): Apply function to each element, returns iterator
+- Memory efficient (lazy evaluation)
+- Example: map(int, input().split())
+
+list(): Convert iterable to list
+- Stores all elements in memory
+- Example: list(map(int, input().split()))
+
+Unpacking (*): Pass container elements as individual arguments
+- print(*numbers) outputs space-separated values
+- Example: print(*[1,2,3]) outputs 1 2 3
+
+sort() vs sorted(): Sorting functions
+- sort(): in-place sorting, returns None (memory efficient)
+- sorted(): returns new list
+- Both use Timsort algorithm O(n log n)
