@@ -38,6 +38,9 @@ Sorting functions
 - `sort()`: in-place sorting, returns None (memory efficient)
 - `sorted()`: returns new list
 - Both use Timsort algorithm O(n log n)
+- **Default: ascending order** (오름차순)
+- For descending: add `reverse=True` parameter
+- Example: `numbers.sort(reverse=True)` or `sorted(numbers, reverse=True)`
 
 ## Data Structures
 
