@@ -6,6 +6,10 @@
 Apply function to each element, returns iterator
 - Memory efficient (lazy evaluation)
 - Example: `map(int, input().split())`
+- **IMPORTANT**: map object cannot be indexed directly
+- Use unpacking: `a, b, c = map(int, input().split())` ✓
+- DON'T append directly: `list.append(map(...))` ✗ (stores map object)
+- Use `list(map(...))` for indexing or appending
 
 ### list()
 Convert iterable to list
@@ -25,11 +29,12 @@ Calculate sum of iterable elements
 - Often used with list comprehensions: `sum(x for x in range(10))`
 - Time complexity: O(n)
 
-### max()
-Find maximum value
-- Works with multiple arguments: `max(a, b, c)`
-- Works with iterables: `max([1,2,3])`
+### max() / min()
+Find maximum/minimum value
+- Works with multiple arguments: `max(a, b, c)`, `min(a, b, c)`
+- Works with iterables: `max([1,2,3])`, `min([1,2,3])`
 - Time complexity: O(n)
+- Use `min()` to avoid sorting when only minimum needed
 
 ## Sorting
 
@@ -76,3 +81,29 @@ Read several lines of data
 - `for _ in range(n): input()` → read n lines
 - Avoid storing unnecessary intermediate lists
 - Process each line immediately when possible
+
+### len()
+Get size/length of containers
+- Works with lists, strings, sets, dictionaries
+- Example: `len([1,2,3])` returns `3`
+- Time complexity: O(1)
+
+### List comprehensions
+Create lists with filtering and transformation
+- Syntax: `[expression for item in iterable if condition]`
+- Example: `[x for x in numbers if x % 2 == 1]` (odd numbers)
+- More readable than traditional loops
+- Can replace filter() + map() combinations
+
+### Modulo operator (%)
+Calculate remainder after division
+- `num % 2 == 1` checks if number is odd
+- `num % 2 == 0` checks if number is even
+- Common mistake: Don't confuse with bitwise AND (&)
+- Example: `5 % 2 = 1`, `6 % 2 = 0`
+
+### Empty list checking
+Pythonic way to check if list is empty
+- `if not list:` - preferred method
+- `if len(list) == 0:` - also works but less pythonic
+- Empty lists evaluate to False in boolean context
