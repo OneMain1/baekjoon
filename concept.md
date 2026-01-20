@@ -46,6 +46,7 @@ Sorting functions
 - **Default: ascending order** (오름차순)
 - For descending: add `reverse=True` parameter
 - Example: `numbers.sort(reverse=True)` or `sorted(numbers, reverse=True)`
+- **CRITICAL**: `[].sort()` returns None, not a list!
 
 ## Data Structures
 
@@ -94,6 +95,13 @@ Create lists with filtering and transformation
 - Example: `[x for x in numbers if x % 2 == 1]` (odd numbers)
 - More readable than traditional loops
 - Can replace filter() + map() combinations
+
+### Division operators
+Different types of division in Python
+- `/` : Float division → `10 / 3 = 3.3333...`
+- `//` : Integer division (floor) → `10 // 3 = 3`
+- `%` : Modulo (remainder) → `10 % 3 = 1`
+- Use `//` when result must be integer
 
 ### Modulo operator (%)
 Calculate remainder after division
