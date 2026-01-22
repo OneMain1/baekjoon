@@ -115,3 +115,32 @@ Pythonic way to check if list is empty
 - `if not list:` - preferred method
 - `if len(list) == 0:` - also works but less pythonic
 - Empty lists evaluate to False in boolean context
+
+## Advanced Algorithms
+
+### Dynamic Programming (DP)
+Solve problems by breaking into subproblems and storing results
+- **Key concepts**: Optimal substructure + Overlapping subproblems
+- **3D DP**: `dp[i][j][k]` for multi-dimensional state tracking
+- Example: `dp[i][j][k]` = using first i items, select j items, sum equals k
+- Time complexity: O(n × select × target)
+
+### Combinations (itertools)
+Generate all possible combinations without repetition
+- `combinations(iterable, r)` returns all r-length combinations
+- Example: `combinations([1,2,3], 2)` → `(1,2), (1,3), (2,3)`
+- Time complexity: O(C(n,r)) where C(n,r) = n!/(r!(n-r)!)
+- Use for brute force when search space is small
+
+### Function objects vs Function calls
+Functions are first-class objects in Python
+- `function_name` refers to function object (shows memory address)
+- `function_name()` calls the function and returns result
+- Functions can be assigned to variables and passed as arguments
+- Example: `print(func)` vs `print(func())`
+
+### Backtracking
+Trace back through DP table to find actual solution path
+- After DP confirms solution exists, reconstruct the path
+- Check which transitions were taken in the DP table
+- Build solution by reversing the decision sequence
