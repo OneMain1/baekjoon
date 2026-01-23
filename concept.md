@@ -126,6 +126,22 @@ Calculate remainder after division
 - Common mistake: Don't confuse with bitwise AND (&)
 - Example: `5 % 2 = 1`, `6 % 2 = 0`
 
+### Slice assignment (슬라이스 대입)
+Replace a section of a list in-place using slice assignment
+- `list[a:b] = new_values` replaces elements from index a to b-1
+- Reverse a sublist: `list[a:b] = list[a:b][::-1]`
+- `[::-1]` creates a reversed copy of the slice
+- Example: `numbers[2:5] = numbers[2:5][::-1]` reverses indices 2,3,4
+- Useful for partial list manipulation without rebuilding the entire list
+
+### Built-in name shadowing (내장 함수명 충돌)
+Never use built-in function names as variable/parameter names
+- `list`, `map`, `int`, `str`, `sum`, `max`, `min` etc. are built-in functions
+- Using them as names shadows the built-in: `list = [1,2,3]` → `list()` no longer works
+- Causes `TypeError: 'list' object is not callable`
+- **Fix**: Use descriptive names like `nums`, `result`, `items` instead
+- Example: `def func(list):` ✗ → `def func(nums):` ✓
+
 ### Empty list checking
 Pythonic way to check if list is empty
 - `if not list:` - preferred method
