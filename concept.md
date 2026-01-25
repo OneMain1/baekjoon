@@ -37,6 +37,25 @@ Control line ending in print output
 - Example: `for i in range(3): print(i, end=' ')` → `0 1 2 `
 - Useful when printing multiple values in a loop on one line
 
+## String Methods
+
+### center() / rjust() / ljust()
+String alignment methods for padding
+- `s.center(width)` - 중앙 정렬, 양쪽에 공백 추가
+- `s.rjust(width)` - 오른쪽 정렬, 왼쪽에 공백 추가
+- `s.ljust(width)` - 왼쪽 정렬, 오른쪽에 공백 추가
+- Example: `'*'.center(5)` → `'  *  '`
+- Example: `'*'.rjust(5)` → `'    *'`
+- **주의**: `center()`는 양쪽에 공백이 추가되어 BOJ에서 출력 형식 오류 발생 가능
+
+### rstrip() / lstrip() / strip()
+Remove whitespace from strings
+- `s.rstrip()` - 오른쪽(trailing) 공백 제거
+- `s.lstrip()` - 왼쪽(leading) 공백 제거
+- `s.strip()` - 양쪽 공백 제거
+- **BOJ 팁**: trailing space로 인한 출력 형식 오류 시 `rstrip()` 사용
+- Example: `'  *  '.rstrip()` → `'  *'`
+
 ## Data Processing
 
 ### sum()
