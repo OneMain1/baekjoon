@@ -56,6 +56,13 @@ Remove whitespace from strings
 - **BOJ 팁**: trailing space로 인한 출력 형식 오류 시 `rstrip()` 사용
 - Example: `'  *  '.rstrip()` → `'  *'`
 
+### join()
+Join iterable elements into a single string
+- `'separator'.join(list)` - 리스트를 구분자로 연결
+- Example: `'\n'.join(['a', 'b', 'c'])` → `'a\nb\nc'`
+- Example: `' '.join(['hello', 'world'])` → `'hello world'`
+- 여러 줄 출력 시 유용: `print('\n'.join(lines))`
+
 ## Data Processing
 
 ### sum()
@@ -70,6 +77,12 @@ Find maximum/minimum value
 - Works with iterables: `max([1,2,3])`, `min([1,2,3])`
 - Time complexity: O(n)
 - Use `min()` to avoid sorting when only minimum needed
+
+### abs()
+Return absolute value of a number
+- 대칭 패턴 구현에 유용: `range(1-n, n)`에서 `abs(i)` 활용
+- Example: `abs(-3)` → `3`, `abs(3)` → `3`
+- 마름모 출력: `' ' * abs(i) + '*' * (2 * (n - abs(i)) - 1)`
 
 ## Sorting
 
@@ -161,6 +174,14 @@ Replace a section of a list in-place using slice assignment
 - `[::-1]` creates a reversed copy of the slice
 - Example: `numbers[2:5] = numbers[2:5][::-1]` reverses indices 2,3,4
 - Useful for partial list manipulation without rebuilding the entire list
+
+### Advanced slicing (고급 슬라이싱)
+Slice with start, stop, and step for flexible list manipulation
+- `list[-2::-1]` - 마지막에서 두 번째부터 역순으로 (마지막 제외)
+- `list[::2]` - 짝수 인덱스만
+- `list[1::2]` - 홀수 인덱스만
+- Example: `[1,2,3,4,5][-2::-1]` → `[4,3,2,1]`
+- 마름모 패턴: `top + top[-2::-1]` (상단 + 꼭대기 제외 역순)
 
 ### Built-in name shadowing (내장 함수명 충돌)
 Never use built-in function names as variable/parameter names
