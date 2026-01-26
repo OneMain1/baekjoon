@@ -98,6 +98,14 @@ Return absolute value of a number
 - Example: `abs(-3)` → `3`, `abs(3)` → `3`
 - 마름모 출력: `' ' * abs(i) + '*' * (2 * (n - abs(i)) - 1)`
 
+### count()
+Count occurrences of a value in a sequence
+- `list.count(value)` - 리스트에서 값의 개수
+- `str.count(substr)` - 문자열에서 부분문자열 개수
+- Example: `[1,2,2,3].count(2)` → `2`
+- Example: `'abab'.count('a')` → `2`
+- 단순 카운트는 Counter보다 간결
+
 ## Sorting
 
 ### sort() vs sorted()
