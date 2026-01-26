@@ -63,6 +63,20 @@ Join iterable elements into a single string
 - Example: `' '.join(['hello', 'world'])` → `'hello world'`
 - 여러 줄 출력 시 유용: `print('\n'.join(lines))`
 
+### ord() / chr()
+Convert between characters and ASCII codes
+- `ord(char)` - 문자 → ASCII 코드
+- `chr(code)` - ASCII 코드 → 문자
+- Example: `ord('a')` → `97`, `chr(97)` → `'a'`
+- 알파벳 인덱스: `ord(char) - ord('a')` → 'a'=0, 'b'=1, ...
+- 알파벳 카운트: `counts[ord(char) - ord('a')] += 1`
+
+### String is iterable (문자열 순회)
+Strings can be iterated directly without list()
+- `for char in "abc":` ✓ (바로 순회 가능)
+- `for char in list("abc"):` ✗ (불필요한 변환)
+- `list(input())` 대신 `for char in input():` 사용
+
 ## Data Processing
 
 ### sum()
@@ -116,6 +130,8 @@ Count occurrences of elements
 - Returns dict-like object with counts
 - Example: `Counter([1,2,2,3])` returns `Counter({2:2, 1:1, 3:1})`
 - Methods: `most_common()`, `elements()`, `update()`
+- `c.get(key, default)` - 키가 없으면 기본값 반환 (KeyError 방지)
+- Example: `Counter('aab').get('c', 0)` → `0`
 
 ## Optimization Patterns
 
