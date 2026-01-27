@@ -19,6 +19,21 @@ Choose correct pattern based on input format
 - **Common mistake**: `int(input().split())` ✗ → int() can't convert list
 - **Common mistake**: `map(int, input())` for single number ✗ → returns map object
 
+### split()
+Split string into list by delimiter
+- `input().split()` - splits by whitespace
+- Example: `"P x".split()` → `['P', 'x']`
+- Example: `"L".split()` → `['L']` (single element)
+- Warning: accessing `[1]` when only 1 element causes IndexError
+
+### input() vs sys.stdin.readline()
+Fast input for competitive programming
+- `input()` - automatically removes newline
+- `sys.stdin.readline()` - includes newline (`\n`)
+- Example: input "abc" → `input()` = `"abc"`, `readline()` = `"abc\n"`
+- `sys.stdin.readline()` is much faster for large input
+- Use `.rstrip()` to remove newline: `sys.stdin.readline().rstrip()`
+
 ### list()
 Convert iterable to list
 - Stores all elements in memory
@@ -39,43 +54,49 @@ Control line ending in print output
 
 ## String Methods
 
+### Single vs Double Quotes
+Single quotes and double quotes are identical in Python
+- `'P' == "P"` → `True`
+- Both create the same string
+- Useful for quotes inside quotes: `"It's okay"`, `'He said "Hi"'`
+
 ### center() / rjust() / ljust()
 String alignment methods for padding
-- `s.center(width)` - 중앙 정렬, 양쪽에 공백 추가
-- `s.rjust(width)` - 오른쪽 정렬, 왼쪽에 공백 추가
-- `s.ljust(width)` - 왼쪽 정렬, 오른쪽에 공백 추가
+- `s.center(width)` - center align, add spaces on both sides
+- `s.rjust(width)` - right align, add spaces on left
+- `s.ljust(width)` - left align, add spaces on right
 - Example: `'*'.center(5)` → `'  *  '`
 - Example: `'*'.rjust(5)` → `'    *'`
-- **주의**: `center()`는 양쪽에 공백이 추가되어 BOJ에서 출력 형식 오류 발생 가능
+- **Warning**: `center()` adds spaces on both sides, may cause BOJ format error
 
 ### rstrip() / lstrip() / strip()
 Remove whitespace from strings
-- `s.rstrip()` - 오른쪽(trailing) 공백 제거
-- `s.lstrip()` - 왼쪽(leading) 공백 제거
-- `s.strip()` - 양쪽 공백 제거
-- **BOJ 팁**: trailing space로 인한 출력 형식 오류 시 `rstrip()` 사용
+- `s.rstrip()` - remove trailing (right) whitespace
+- `s.lstrip()` - remove leading (left) whitespace
+- `s.strip()` - remove both sides
+- **BOJ tip**: use `rstrip()` to fix format errors from trailing spaces
 - Example: `'  *  '.rstrip()` → `'  *'`
 
 ### join()
 Join iterable elements into a single string
-- `'separator'.join(list)` - 리스트를 구분자로 연결
+- `'separator'.join(list)` - join list with separator
 - Example: `'\n'.join(['a', 'b', 'c'])` → `'a\nb\nc'`
 - Example: `' '.join(['hello', 'world'])` → `'hello world'`
-- 여러 줄 출력 시 유용: `print('\n'.join(lines))`
+- Useful for multi-line output: `print('\n'.join(lines))`
 
 ### ord() / chr()
 Convert between characters and ASCII codes
-- `ord(char)` - 문자 → ASCII 코드
-- `chr(code)` - ASCII 코드 → 문자
+- `ord(char)` - character → ASCII code
+- `chr(code)` - ASCII code → character
 - Example: `ord('a')` → `97`, `chr(97)` → `'a'`
-- 알파벳 인덱스: `ord(char) - ord('a')` → 'a'=0, 'b'=1, ...
-- 알파벳 카운트: `counts[ord(char) - ord('a')] += 1`
+- Alphabet index: `ord(char) - ord('a')` → 'a'=0, 'b'=1, ...
+- Alphabet count: `counts[ord(char) - ord('a')] += 1`
 
-### String is iterable (문자열 순회)
+### String is iterable
 Strings can be iterated directly without list()
-- `for char in "abc":` ✓ (바로 순회 가능)
-- `for char in list("abc"):` ✗ (불필요한 변환)
-- `list(input())` 대신 `for char in input():` 사용
+- `for char in "abc":` ✓ (can iterate directly)
+- `for char in list("abc"):` ✗ (unnecessary conversion)
+- Use `for char in input():` instead of `list(input())`
 
 ## Data Processing
 
@@ -94,17 +115,17 @@ Find maximum/minimum value
 
 ### abs()
 Return absolute value of a number
-- 대칭 패턴 구현에 유용: `range(1-n, n)`에서 `abs(i)` 활용
+- Useful for symmetric patterns: use `abs(i)` with `range(1-n, n)`
 - Example: `abs(-3)` → `3`, `abs(3)` → `3`
-- 마름모 출력: `' ' * abs(i) + '*' * (2 * (n - abs(i)) - 1)`
+- Diamond pattern: `' ' * abs(i) + '*' * (2 * (n - abs(i)) - 1)`
 
 ### count()
 Count occurrences of a value in a sequence
-- `list.count(value)` - 리스트에서 값의 개수
-- `str.count(substr)` - 문자열에서 부분문자열 개수
+- `list.count(value)` - count value in list
+- `str.count(substr)` - count substring in string
 - Example: `[1,2,2,3].count(2)` → `2`
 - Example: `'abab'.count('a')` → `2`
-- 단순 카운트는 Counter보다 간결
+- Simpler than Counter for basic counting
 
 ## Sorting
 
@@ -113,12 +134,29 @@ Sorting functions
 - `sort()`: in-place sorting, returns None (memory efficient)
 - `sorted()`: returns new list
 - Both use Timsort algorithm O(n log n)
-- **Default: ascending order** (오름차순)
+- **Default: ascending order**
 - For descending: add `reverse=True` parameter
 - Example: `numbers.sort(reverse=True)` or `sorted(numbers, reverse=True)`
 - **CRITICAL**: `[].sort()` returns None, not a list!
 
 ## Data Structures
+
+### List - Adding Elements
+Methods to add elements to a list
+- `append(x)` - add to end, O(1)
+- `insert(i, x)` - insert at index i, O(n)
+- Example: `lst.append('d')` → add 'd' to end
+- Example: `lst.insert(2, 'x')` → insert 'x' at index 2
+- `append()` is more efficient for adding to end
+
+### List - Removing Elements
+Methods to remove elements from a list
+- `del lst[i]` - delete at index i, no return value
+- `lst.pop(i)` - delete at index i and return the value
+- `lst.pop()` - delete and return last element, O(1)
+- Example: `del lst[2]` → delete index 2
+- Example: `x = lst.pop(2)` → delete index 2 and store value
+- Middle deletion is O(n), end deletion is O(1)
 
 ### Dictionary
 Key-Value pairs for fast lookups
@@ -138,7 +176,7 @@ Count occurrences of elements
 - Returns dict-like object with counts
 - Example: `Counter([1,2,2,3])` returns `Counter({2:2, 1:1, 3:1})`
 - Methods: `most_common()`, `elements()`, `update()`
-- `c.get(key, default)` - 키가 없으면 기본값 반환 (KeyError 방지)
+- `c.get(key, default)` - return default if key not found (prevents KeyError)
 - Example: `Counter('aab').get('c', 0)` → `0`
 
 ## Optimization Patterns
@@ -191,7 +229,7 @@ Calculate remainder after division
 - Common mistake: Don't confuse with bitwise AND (&)
 - Example: `5 % 2 = 1`, `6 % 2 = 0`
 
-### Slice assignment (슬라이스 대입)
+### Slice assignment
 Replace a section of a list in-place using slice assignment
 - `list[a:b] = new_values` replaces elements from index a to b-1
 - Reverse a sublist: `list[a:b] = list[a:b][::-1]`
@@ -199,15 +237,15 @@ Replace a section of a list in-place using slice assignment
 - Example: `numbers[2:5] = numbers[2:5][::-1]` reverses indices 2,3,4
 - Useful for partial list manipulation without rebuilding the entire list
 
-### Advanced slicing (고급 슬라이싱)
+### Advanced slicing
 Slice with start, stop, and step for flexible list manipulation
-- `list[-2::-1]` - 마지막에서 두 번째부터 역순으로 (마지막 제외)
-- `list[::2]` - 짝수 인덱스만
-- `list[1::2]` - 홀수 인덱스만
+- `list[-2::-1]` - reverse from second-to-last (exclude last)
+- `list[::2]` - even indices only
+- `list[1::2]` - odd indices only
 - Example: `[1,2,3,4,5][-2::-1]` → `[4,3,2,1]`
-- 마름모 패턴: `top + top[-2::-1]` (상단 + 꼭대기 제외 역순)
+- Diamond pattern: `top + top[-2::-1]` (top + reverse excluding peak)
 
-### Built-in name shadowing (내장 함수명 충돌)
+### Built-in name shadowing
 Never use built-in function names as variable/parameter names
 - `list`, `map`, `int`, `str`, `sum`, `max`, `min` etc. are built-in functions
 - Using them as names shadows the built-in: `list = [1,2,3]` → `list()` no longer works
@@ -249,3 +287,15 @@ Trace back through DP table to find actual solution path
 - After DP confirms solution exists, reconstruct the path
 - Check which transitions were taken in the DP table
 - Build solution by reversing the decision sequence
+
+### Two Stack Technique
+Use two stacks for efficient cursor-based editing (BOJ 1406)
+- `left` stack: characters to the left of cursor
+- `right` stack: characters to the right (stored in reverse)
+- All operations O(1):
+  - P x: `left.append(x)` - add left of cursor
+  - L: `right.append(left.pop())` - move cursor left
+  - D: `left.append(right.pop())` - move cursor right
+  - B: `left.pop()` - delete left of cursor
+- Output: `''.join(left + right[::-1])`
+- **Key insight**: `insert()`/`del` in middle is O(n), stack end operations are O(1)
