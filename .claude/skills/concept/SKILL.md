@@ -32,3 +32,4 @@ Brief description
 - Maintain organized section structure
 - Write clear and concise descriptions
 - Include practical code examples
+- **Write all content in English only** (no Korean or other languages)
