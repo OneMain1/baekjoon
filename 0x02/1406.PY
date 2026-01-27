@@ -30,14 +30,14 @@ right = []
 n = int(input())
 
 for _ in range(n):
-    com = input().split()                                                                                                                       
-    if com[0] == 'P':                                                                                                                           
-        left.append(com[1])                                                                                                                     
-    elif com[0] == 'L' and left:                                                                                                                
-        right.append(left.pop())                                                                                                                
-    elif com[0] == 'D' and right:                                                                                                               
-        left.append(right.pop())                                                                                                                
-    elif com[0] == 'B' and left:                                                                                                                
-        left.pop()                                                                                                                              
-                                                                                                                                                
-print(''.join(left + right[::-1]))     
+    com = input().split()
+    if com[0] == 'P':
+        left.append(com[1])
+    elif com[0] == 'L' and left:
+        right.append(left.pop())
+    elif com[0] == 'D' and right:
+        left.append(right.pop())
+    elif com[0] == 'B' and left:
+        left.pop()
+
+print(''.join(left + right[::-1]))
